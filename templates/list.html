@@ -10,19 +10,33 @@
         <h1>User stroy manager</h1>
         <a href="/edit-story" class="button"></a>
         <p>
-            <table border="1">
-                <tr>
-                    <th>ID</th>
-                    <th>Story title</th>
-                    <th>User story</th>
-                    <th>Acceptance criteria</th>
-                    <th>Buisness value</th>
-                    <th>Estimation</th>
-                    <th>Status</th>
-                    <th>Edit/Delete</th>
-                </tr>
-                
-            </table>
+            {% if not story %}
+                The story.csv is missing
+            {% else %}
+                <table border="1">
+                    <tr>
+                        <th>ID</th>
+                        <th>Story title</th>
+                        <th>User story</th>
+                        <th>Acceptance criteria</th>
+                        <th>Buisness value</th>
+                        <th>Estimation</th>
+                        <th>Status</th>
+                        <th>Edit/Delete</th>
+                    </tr>
+                    {% for line in story %}
+                        <tr>
+                            {% for value in line %}
+                                <td> {{ value }} </td>
+                            {% endfor %}
+                            <td>
+                                <img src="/static/img/edit.png" width="20px" height="20px" alt="edit"> 
+                                <img src="/static/img/trash.png" width="20px" height="20px" alt="delete">
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            {% endif %}
         </p>
         
     </body>

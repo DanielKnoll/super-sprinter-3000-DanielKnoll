@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Super Sprinter 3000</title>
+    </head>
+    <body>
+        <h2>User stroy manager - Add new Story</h2> <!-- Edit Story-->
+        <form action="/save-story" method="POST">
+            <p>
+                Story title:<br>
+                <input name=storytitle placeholder="{{ placeholder }}" value="{{ title }}" />
+            </p>
+            <p>
+                User story:<br>
+                <textarea name="story" value="{{ story }}"></textarea>
+            </p>
+            <p>
+                Acceptance criteria:<br>
+                <textarea name="criteria" value="{{ criteria }}"></textarea>
+            </p>
+            <p>
+                Buisness value:<br>
+                <input type="number" name="b_value" min="100" max="1500" step="100" value="100">
+            </p>
+            <p>
+                Estimation (h):<br>
+                <input type="number" name="estimation" min="0.5" max="40" step="0.5" value="0.5">
+            </p>
+            <p>
+                Status:<br>
+                <input list="status" name="status">
+                <datalist id="status">
+                    <option value="Planning">
+                    <option value="TODO">
+                    <option value="In Progress">
+                    <option value="Review">
+                    <option value="Done">
+                </datalist>
+            </p>
+            <input type="submit" value="Create"/>
+        </form>
+    </body>
+</html>

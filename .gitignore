@@ -1,0 +1,17 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*/__pycache__/
+*.py[cod]
+*$py.class
+
+# OS-X
+.DS_Store
+
+# PyCharm
+.idea/
+
+#VSCode
+.vscode/
+
+#all *.csv
+super-sprinter-3000-DanielKnoll/**/*.csv

@@ -8,7 +8,10 @@
     </head>
     <body>
         <h1>User stroy manager</h1>
-        <a href="/edit-story" class="button"></a>
+        <form action="/new-story" method="GET">
+            <input type="button" value="Add new Story"/>
+        </form>
+        <a href="/new-story" class="button">Add new Story</a>
         <p>
             {% if not story %}
                 The story.csv is missing

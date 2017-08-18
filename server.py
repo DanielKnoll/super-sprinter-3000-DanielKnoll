@@ -4,23 +4,24 @@ app = Flask(__name__)
 
 
 @app.route("/")
+@app.route("/list")
 def route_list():
     story = functions.get_story()
     return render_template("list.html", story=story)
 
 
-@app.route("/edit-story", methods=["GET", "POST"])
+@app.route("/new-story", methods=["GET", "POST"])
+@app.route("/edit-story/", methods=["GET", "POST"])
 def route_edit():
-    note_text = None
-    if "note" in session:
-        note_text = session["note"]
-    return render_template("form.html", note=note_text)
+    return render_template("form.html")
 
 
 @app.route("/save-story", methods=["POST"])
 def route_save():
     print("POST request received!")
-    session["note"] = request.form["note"]
+    if request.method == 'POST':
+        new_story = request.form
+        functions.save_new_story(new_story)
     return redirect("/")
 
 

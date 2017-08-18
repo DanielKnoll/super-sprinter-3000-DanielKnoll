@@ -60,5 +60,8 @@ def save_edited_story(id_, edited_story):
 
 def delete_story(id_):
     story = get_story()
-    story.pop(id_)
+    for i, line in enumerate(story):
+        if line[0] == str(id_):
+            story.pop(i)
+            break
     write_story(story)

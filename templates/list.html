@@ -7,10 +7,8 @@
         <title>Super Sprinter 3000</title>
     </head>
     <body>
-        <h1>User stroy manager</h1>
-        <form action="/story" method="GET">
-            <input type="submit" value="Add new Story"/>
-        </form>
+        <h1>User story manager</h1>
+        <button type="submit" formmethod="POST" onclick="location.href='../story'">Add new Story</button>
         <p>
             {% if story == None %}
                 The story.csv is missing
@@ -32,18 +30,17 @@
                                 <td> {{ value }} </td>
                             {% endfor %}
                             <td>
-                                <a href="/story/2">
-                                    <img src="/static/img/edit.png" width="20px" height="20px" alt="edit">
-                                </a> 
-                                <a href="/delete-story/4">
-                                <img src="/static/img/trash.png" width="20px" height="20px" alt="delete">
-                                </a>
+                                <form action="/story/{{ line[0] }}" method="POST">
+                                    <input type="image" src="/static/img/edit.png" width="20px" height="20px"/>
+                                </form>
+                                <form action="/delete-story/{{ line[0] }}" method="POST">
+                                    <input type="image" src="/static/img/trash.png" width="20px" height="20px"/>
+                                </form>
                             </td>
                         </tr>
                     {% endfor %}
                 </table>
             {% endif %}
-        </p>
-        
+        </p>   
     </body>
 </html>

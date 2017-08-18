@@ -1,2 +1,4 @@
-Result page;Print out the info from the forms;Use a table for the results;100;2;TODO
-Form page;Ask the user's name, email address and hair color;Only valid email address;200;3;Planning
+1;Result page;Print out the info from the forms;Use a table for the results;100;2;TODO
+2;Form page;Ask the user's name, email address and hair color;Only valid email address;200;3;Planning
+3;problem;need new;crit;500;2.5;Planning
+4;title;story;crit;200;4;Review

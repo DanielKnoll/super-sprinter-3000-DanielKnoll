@@ -21,7 +21,7 @@ def get_story():
     try:
         story = get_story_from_file(file_name)
     except FileNotFoundError:
-        return []
+        return
     return story
 
 
@@ -30,15 +30,35 @@ def write_story(story):
     try:
         write_story_to_file(file_name, story)
     except FileNotFoundError:
-        return []
+        return
+
+
+def make_list_from_form(dictionary):
+    table_heads = ["story_title", "story", "criteria", "bis_value", "estimation", "status"]
+    story_list = []
+    for key in table_heads:
+        story_list.append(dictionary[key])
+    return story_list
 
 
 def save_new_story(new_story):
-    table_heads = ["story_title", "story", "criteria", "b_value", "estimation", "status"]
+    new_story = make_list_from_form(new_story)
     story = get_story()
-    story.append([])
-    for key in table_heads:
-        story[-1].append(new_story[key])
+    story.append(new_story)
     new_id = str(len(story))
     story[-1].insert(0, new_id)
+    write_story(story)
+
+
+def save_edited_story(id_, edited_story):
+    edited_story = make_list_from_form(edited_story)
+    edited_story.insert(0, str(id_+1))
+    story = get_story()
+    story[id_] = edited_story
+    write_story(story)
+
+
+def delete_story(id_):
+    story = get_story()
+    story.pop(id_)
     write_story(story)

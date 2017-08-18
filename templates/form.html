@@ -7,11 +7,11 @@
         <title>Super Sprinter 3000</title>
     </head>
     <body>
-        <h2>User stroy manager - Add new Story</h2> <!-- Edit Story-->
-        <form action="/save-story" method="POST">
+        <h2>User stroy manager - {% if id_ %} Edit Story {% else %} Add new Story {% endif %}</h2> <!-- Edit Story-->
+        <form {% if id_ %} action="/edit-story" {% else %} action="/save-story" {% endif %} method="POST">
             <p>
                 Story title:<br>
-                <input name=storytitle placeholder="{{ placeholder }}" value="{{ title }}" />
+                <input name=story_title placeholder="{{ placeholder }}" value="{{ title }}" />
             </p>
             <p>
                 User story:<br>
@@ -23,7 +23,7 @@
             </p>
             <p>
                 Buisness value:<br>
-                <input type="number" name="b_value" min="100" max="1500" step="100" value="100">
+                <input type="number" name="bis_value" min="100" max="1500" step="100" value="100">
             </p>
             <p>
                 Estimation (h):<br>
@@ -31,16 +31,15 @@
             </p>
             <p>
                 Status:<br>
-                <input list="status" name="status">
-                <datalist id="status">
-                    <option value="Planning">
-                    <option value="TODO">
-                    <option value="In Progress">
-                    <option value="Review">
-                    <option value="Done">
-                </datalist>
+                <select name="status">
+                    <option value="Planning" selected>Planning</option>
+                    <option value="TODO">TODO</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Review">Review</option>
+                    <option value="Done">Done</option>
+                </select>
             </p>
-            <input type="submit" value="Create"/>
+            <input type="submit" {% if id_ %} value="Update" {% else %} value="Create" {% endif %}/>
         </form>
     </body>
 </html>

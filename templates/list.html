@@ -8,12 +8,11 @@
     </head>
     <body>
         <h1>User stroy manager</h1>
-        <form action="/new-story" method="GET">
-            <input type="button" value="Add new Story"/>
+        <form action="/story" method="GET">
+            <input type="submit" value="Add new Story"/>
         </form>
-        <a href="/new-story" class="button">Add new Story</a>
         <p>
-            {% if not story %}
+            {% if story == None %}
                 The story.csv is missing
             {% else %}
                 <table border="1">
@@ -27,14 +26,18 @@
                         <th>Status</th>
                         <th>Edit/Delete</th>
                     </tr>
-                    {% for line in story %}
+                    {% for line in story%}
                         <tr>
                             {% for value in line %}
                                 <td> {{ value }} </td>
                             {% endfor %}
                             <td>
-                                <img src="/static/img/edit.png" width="20px" height="20px" alt="edit"> 
+                                <a href="/story/2">
+                                    <img src="/static/img/edit.png" width="20px" height="20px" alt="edit">
+                                </a> 
+                                <a href="/delete-story/4">
                                 <img src="/static/img/trash.png" width="20px" height="20px" alt="delete">
+                                </a>
                             </td>
                         </tr>
                     {% endfor %}

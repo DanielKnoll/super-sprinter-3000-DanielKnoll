@@ -2,33 +2,24 @@ def get_filename():
     return "./templates/story.csv"
 
 
-def get_story_from_file(file_name):
-    with open(file_name, "r") as file:
-        lines = file.readlines()
-    all_story = [element.replace("\n", "").split(";") for element in lines]
-    return all_story
-
-
-def write_story_to_file(file_name, all_story):
-    with open(file_name, "w") as file:
-        for record in all_story:
-            row = ';'.join(record)
-            file.write(row + "\n")
-
-
 def get_story():
     file_name = get_filename()
     try:
-        all_story = get_story_from_file(file_name)
+        with open(file_name, "r") as file:
+            lines = file.readlines()
     except FileNotFoundError:
         return
+    all_story = [element.replace("\n", "").split(";") for element in lines]
     return all_story
 
 
 def write_story(all_story):
     file_name = get_filename()
     try:
-        write_story_to_file(file_name, all_story)
+        with open(file_name, "w") as file:
+            for record in all_story:
+                row = ';'.join(record)
+                file.write(row + "\n")
     except FileNotFoundError:
         return
 
@@ -59,7 +50,7 @@ def find_line_index_by_id(id_, all_story):
 
 def save_edited_story(id_, edited_story):
     edited_story = make_list_from_form_result(edited_story)
-    edited_story.insert(0, str(id_+1))
+    edited_story.insert(0, str(id_))
     all_story = get_story()
     try:
         index = find_line_index_by_id(id_, all_story)

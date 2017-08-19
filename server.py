@@ -21,7 +21,7 @@ def route_edit(id_=None):
             return
         one_story = all_story[index]
         title = one_story[1]
-        story = one_story[2]
+        story_desc = one_story[2]
         criteria = one_story[3]
         bis_value = one_story[4]
         estimation = one_story[5]
@@ -29,7 +29,7 @@ def route_edit(id_=None):
         html_code = render_template("form.html",
                                     id_=id_,
                                     title=title,
-                                    story=story,
+                                    story_desc=story_desc,
                                     criteria=criteria,
                                     bis_value=bis_value,
                                     estimation=estimation,

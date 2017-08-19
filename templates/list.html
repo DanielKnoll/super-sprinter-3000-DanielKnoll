@@ -8,7 +8,7 @@
     </head>
     <body>
         <h1>User story manager</h1>
-        <button type="submit" formmethod="POST" onclick="location.href='../story'">Add new Story</button>
+        <button type="submit" formmethod="GET" onclick="location.href='../story'">Add new Story</button>
         <p>
             {% if story == None %}
                 The story.csv is missing
@@ -24,13 +24,13 @@
                         <th>Status</th>
                         <th>Edit/Delete</th>
                     </tr>
-                    {% for line in story%}
+                    {% for line in all_story%}
                         <tr>
                             {% for value in line %}
                                 <td> {{ value }} </td>
                             {% endfor %}
                             <td>
-                                <form action="/story/{{ line[0] }}" method="POST">
+                                <form action="/story/{{ line[0] }}" method="GET">
                                     <input type="image" src="/static/img/edit.png" width="20px" height="20px"/>
                                 </form>
                                 <form action="/delete-story/{{ line[0] }}" method="POST">

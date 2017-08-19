@@ -8,18 +8,18 @@
     </head>
     <body>
         <h2>User story manager - {% if id_ %} Edit Story {% else %} Add new Story {% endif %}</h2>
-        <form {% if id_ %} action="/edit-story" {% else %} action="/save-story" {% endif %} method="POST">
+        <form {% if id_ %} action="/story/{{ id_ }}" {% else %} action="/save-story" {% endif %} method="POST">
             <p>
                 Story title:<br>
                 <input name="story_title" value="{{ title }}" />
             </p>
             <p>
                 User story:<br>
-                <textarea name="story_desc" value="">{{ story_desc }}</textarea>
+                <textarea name="story">{{ story }}</textarea>
             </p>
             <p>
                 Acceptance criteria:<br>
-                <textarea name="criteria" value="">{{ criteria }}</textarea>
+                <textarea name="criteria">{{ criteria }}</textarea>
             </p>
             <p>
                 Buisness value:<br>
@@ -35,10 +35,10 @@
                 Status:<br>
                 <select name="status">
                     <option value="Planning" {% if id_ and status == "Planning" %} selected {% endif %}>Planning</option>
-                    <option value="TODO"{% if id_ and status == "TODO" %} selected {% endif %}>TODO</option>
-                    <option value="In Progress"{% if id_ and status == "In Progress" %} selected {% endif %}>In Progress</option>
-                    <option value="Review"{% if id_ and status == "Review" %} selected {% endif %}>Review</option>
-                    <option value="Done"{% if id_ and status == "Done" %} selected {% endif %}>Done</option>
+                    <option value="TODO" {% if id_ and status == "TODO" %} selected {% endif %}>TODO</option>
+                    <option value="In Progress" {% if id_ and status == "In Progress" %} selected {% endif %}>In Progress</option>
+                    <option value="Review" {% if id_ and status == "Review" %} selected {% endif %}>Review</option>
+                    <option value="Done" {% if id_ and status == "Done" %} selected {% endif %}>Done</option>
                 </select>
             </p>
             <input type="submit" {% if id_ %} value="Update" {% else %} value="Create" {% endif %}/>

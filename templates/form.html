@@ -4,14 +4,23 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
         <title>Super Sprinter 3000</title>
     </head>
     <body>
-        <h2>User story manager - {% if id_ %} Edit Story {% else %} Add new Story {% endif %}</h2>
-        <form {% if id_ %} action="/story/{{ id_ }}" {% else %} action="/save-story" {% endif %} method="POST">
+        <div class="top-strip"><span></span></div>
+        <h2><div class="page-desc">User story manager<br>- {% if id_ %} Edit Story {% else %} Add new Story {% endif %}</div></h2>
+        
+        <div id="logo">
+            <div id="Sup"></div><div id="uper"><span ></span></div>
+            <div id="Sprinter"><span></span></div><div id="N3000"><span></span></div>
+        </div>
+        
+        <div class="centre-box"><div id="form-bg">
+        <form id="form"{% if id_ %} action="/story/{{ id_ }}" {% else %} action="/save-story" {% endif %} method="POST">            
             <p>
                 Story title:<br>
-                <input name="story_title" value="{{ title }}" />
+                <input name="story_title" type="text" value="{{ title }}" />
             </p>
             <p>
                 User story:<br>
@@ -41,7 +50,11 @@
                     <option value="Done" {% if id_ and status == "Done" %} selected {% endif %}>Done</option>
                 </select>
             </p>
-            <input type="submit" {% if id_ %} value="Update" {% else %} value="Create" {% endif %}/>
+            <div class="centre-inline">                    
+                <input type="submit" class="button" {% if id_ %} value="Update" {% else %} value="Create" {% endif %}/>
+            </div>        
         </form>
+        </div></div>
+        <div class="bottom-strip"><span></span></div>
     </body>
 </html>

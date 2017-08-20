@@ -4,15 +4,26 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
         <title>Super Sprinter 3000</title>
     </head>
+    <div id="background">
     <body>
-        <h1>User story manager</h1>
-        <button type="button" formmethod="GET" onclick="location.href='../story'">Add new Story</button>
+        <div class="top-strip"><span></span></div>
+        <h1><div class="page-desc">User story manager</div></h1>
+        <div id="logo">
+            <div id="Sup"></div><div id="uper"><span ></span></div>
+            <div id="Sprinter"><span></span></div><div id="N3000"><span></span></div>
+        </div>
+        
+        <div class="centre-inline">
+            <button type="button" class="button" formmethod="GET" onclick="location.href='../story'">Add new Story</button>
+        </div>
         <p>
             {% if story == None %}
                 The story.csv is missing
             {% else %}
+            <div class="centre-box"><div id="table-bg">
                 <table border="1">
                     <tr>
                         <th>ID</th>
@@ -30,17 +41,20 @@
                                 <td> {{ value }} </td>
                             {% endfor %}
                             <td>
-                                <form action="/story/{{ line[0] }}" method="GET">
+                                <form id="edit" action="/story/{{ line[0] }}" method="GET">
                                     <input type="image" src="/static/img/edit.png" width="20px" height="20px"/>
                                 </form>
-                                <form action="/delete-story/{{ line[0] }}" method="POST">
+                                <form id="delete" action="/delete-story/{{ line[0] }}" method="POST">
                                     <input type="image" src="/static/img/trash.png" width="20px" height="20px"/>
                                 </form>
                             </td>
                         </tr>
                     {% endfor %}
                 </table>
+            </div></div> 
             {% endif %}
-        </p>   
+        </p>
+        <div class="bottom-strip"><span></span></div>
     </body>
+    </div>
 </html>

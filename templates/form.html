@@ -19,30 +19,30 @@
         <div class="centre-box"><div id="form-bg">
         <form id="form"{% if id_ %} action="/story/{{ id_ }}" {% else %} action="/save-story" {% endif %} method="POST">            
             <p>
-                Story title:<br>
-                <input name="story_title" type="text" value="{{ title }}" />
+                <label for="story_title">Story title:</label><br>
+                <input type="text" name="story_title" id="story_title" value="{{ title }}" />
             </p>
             <p>
-                User story:<br>
-                <textarea name="story">{{ story_desc }}</textarea>
+                <label for="story_title">User story:</label><br>
+                <textarea name="story" id="story_desc">{{ story_desc }}</textarea>
             </p>
             <p>
-                Acceptance criteria:<br>
-                <textarea name="criteria">{{ criteria }}</textarea>
+                <label for="story_title">Acceptance criteria:</label><br>
+                <textarea name="criteria" id="story_criteria">{{ criteria }}</textarea>
             </p>
             <p>
-                Buisness value:<br>
-                <input type="number" name="bis_value" min="100" max="1500" step="100"
+                <label for="story_title">Buisness value:</label><br>
+                <input type="number" name="bis_value" id="story_bis_value" min="100" max="1500" step="100"
                 {% if id_ %} value="{{ bis_value }}" {% else %} value="100" {% endif %}>
             </p>
             <p>
-                Estimation (h):<br>
-                <input type="number" name="estimation" min="0.5" max="40" step="0.5" 
+                <label for="story_title">Estimation (h):</label><br>
+                <input type="number" name="estimation" id="story_estimation" min="0.5" max="40" step="0.5" 
                 {% if id_ %} value="{{ estimation }}" {% else %} value="0.5" {% endif %}>
             </p>
             <p>
-                Status:<br>
-                <select name="status">
+                <label for="story_title">Status:</label><br>
+                <select name="status" id="story_status">
                     <option value="Planning" {% if id_ and status == "Planning" %} selected {% endif %}>Planning</option>
                     <option value="TODO" {% if id_ and status == "TODO" %} selected {% endif %}>TODO</option>
                     <option value="In Progress" {% if id_ and status == "In Progress" %} selected {% endif %}>In Progress</option>
